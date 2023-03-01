@@ -11,7 +11,7 @@ from products.serializers import ProductSerializer
 from django.forms.models import model_to_dict
 
 
-@api_view(["POST"])
+@api_view(["GET"])
 def api_home(request, *args, **kwargs):
     """ serializer = ProductSerializer(data=request.data)
     print(request.data)
@@ -29,4 +29,7 @@ def api_home(request, *args, **kwargs):
         instance = serializer.save()
         print(instance)
     print('serializer is not valid')
-    return Response(serializer.data)
+    test_data = {'value': 1}
+    response = JsonResponse({'foo': 'bar'})
+
+    return response
